@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { addTodo, changeName, deleteTodo, toggleTodo } from './actions'
+import { addTodo, changeName, deleteTodo, toggleTodo } from './logic'
 
 export default class TodoList extends Component {
   state = {
