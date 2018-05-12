@@ -11,6 +11,7 @@ yarn start
 
 
 git checkout plain-state # Todo app without Redux.
+git checkout redux # Redux without React mappers.
 ```
 
 # By SocialNerds
