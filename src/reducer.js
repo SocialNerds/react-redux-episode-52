@@ -1,6 +1,10 @@
 import { addTodo, changeName, deleteTodo, toggleTodo } from './logic'
 
-export const todoApp = (state = [], action) => {
+const defaultState = {
+  items: [],
+  name: ''
+}
+export const todoApp = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return addTodo(state)
@@ -11,6 +15,6 @@ export const todoApp = (state = [], action) => {
     case 'CHANGE_NAME':
       return changeName(state, action)
     default:
-      return state;
+      return state
   }
 }

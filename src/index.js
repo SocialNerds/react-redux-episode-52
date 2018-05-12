@@ -1,22 +1,21 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
 import './index.css'
 import TodoList from './TodoList'
-import { createStore } from 'redux'
 import { todoApp } from './reducer'
 
-const defaultState = {
-  items: [
-    {name: 'test', id: 1, done: false}
-  ],
-  name: ''
-};
+const logger = store => next => action => {
+  console.log(action, store.getState())
+  next(action)
+}
 
-const store = createStore(todoApp, defaultState)
-store.subscribe(() => {
-  console.log(store.getState())
-})
-store.dispatch({type: 'CHANGE_NAME', name: 'Hello world'})
-store.dispatch({type: 'ADD_TODO'})
+const middleware = applyMiddleware(logger)
 
-ReactDOM.render(<TodoList item={{test: 'name'}}/>, document.getElementById('root'))
+const store = createStore(todoApp, middleware)
+
+render(
+  <Provider store={store}>
+    <TodoList />
+  </Provider>, document.getElementById('root'))

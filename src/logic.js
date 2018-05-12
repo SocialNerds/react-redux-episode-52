@@ -4,7 +4,7 @@ export const addTodo = (state) => {
     name: state.name,
     done: false
   };
-  return Object.assign({}, state, {items: [...state.items, newItem]});
+  return Object.assign({}, state, {items: [...state.items, newItem], name: ''});
 }
 
 export const changeName = (state, action) => {
