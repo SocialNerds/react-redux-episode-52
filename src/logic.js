@@ -18,7 +18,7 @@ export const deleteTodo = (state, action) => {
 
 export const toggleTodo = (state, action) => {
   const items = state.items.map((item) => {
-    return action.id !== item.id ? item : {item, done: !item.done}
+    return action.id !== item.id ? item : {...item, done: !item.done}
   })
 
   return {...state, items}
